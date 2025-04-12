@@ -1,0 +1,48 @@
+---
+- name: Upgrade Python on EC2 instance
+  hosts: myhosts
+  become: yes
+  tasks:
+    - name: Install required packages for Python 3.8
+      yum:
+        name:
+          - gcc
+          - openssl-devel
+          - bzip2-devel
+          - libffi-devel
+        state: present
+
+    - name: Download Python 3.8
+      get_url:
+        url: https://www.python.org/ftp/python/3.8.10/Python-3.8.10.tgz
+        dest: /tmp/Python-3.8.10.tgz
+
+    - name: Extract Python 3.8
+      unarchive:
+        src: /tmp/Python-3.8.10.tgz
+        dest: /usr/src/
+        remote_src: yes
+
+    - name: Install Python 3.8
+      command:
+        cmd: ./configure --enable-optimizations
+        chdir: /usr/src/Python-3.8.10
+
+    - name: Make Python 3.8 the default version
+      command:
+        cmd: make altinstall
+        chdir: /usr/src/Python-3.8.10
+
+    - name: Ensure Python 3.8 is set as default python3 version
+      alternatives:
+        name: python3
+        path: /usr/local/bin/python3.8
+        priority: 1
+
+    - name: Verify Python version
+      command: python3 --version
+      register: python_version
+
+    - name: Show Python version
+      debug:
+        msg: "Python version installed: {{ python_version.stdout }}"

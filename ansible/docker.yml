@@ -1,0 +1,25 @@
+---
+- name: Configure and Run Docker Container
+  hosts: myhosts  # Use the group name from your inventory file
+  remote_user: ec2-user  # SSH username for connecting to the EC2 instance
+  become: yes
+  become_method: sudo
+  tasks:
+    - name: Install Docker on Amazon Linux 2 (using dnf)
+      dnf:
+        name: docker-ce
+        state: present
+
+    - name: Start and enable Docker service
+      service:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Show Docker version
+      command: docker --version
+      register: docker_version
+
+    - name: Display Docker version
+      debug:
+        msg: "Docker version installed: {{ docker_version.stdout }}"

@@ -1,0 +1,26 @@
+# Terraform state files
+.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfvars
+
+# SSH Keys (Private Keys)
+my-key.pem
+my-key.pub
+
+# Ansible
+*.retry
+inventory.ini
+
+# Logs and temporary files
+*.log
+*.bak
+*.tmp
+
+# IDE files
+.vscode/
+.idea/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
