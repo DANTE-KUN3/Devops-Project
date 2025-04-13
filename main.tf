@@ -1,7 +1,7 @@
 provider "aws" {
   region = "us-east-1"
 }
-#newS
+
 # ✅ Upload local public key to AWS
 resource "aws_key_pair" "key" {
   key_name   = "my-key"
