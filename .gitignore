@@ -6,8 +6,9 @@
 
 # SSH Keys (Private Keys)
 my-key
-my-key.pub
 
+# Ignore private keys inside the 'ansible/keys/' folder
+ansible/key/*my-key*
 # Ansible
 *.retry
 inventory.ini
