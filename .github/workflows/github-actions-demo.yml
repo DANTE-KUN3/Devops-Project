@@ -1,0 +1,29 @@
+name: terraform github action flow
+on: [push]
+jobs:
+  build:
+    name: new
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: 1.0.0
+
+      - name: Initialize Terraform
+        run: terraform init
+
+      - name: Validate Terraform configuration
+        run: terraform validate
+
+      - name: Plan Terraform changes
+        run: terraform plan
+
+      - name: Apply Terraform changes
+        run: terraform apply -auto-approve
+
+      - name: destroy Terraform 
+        run: terraform destroy -auto-approve

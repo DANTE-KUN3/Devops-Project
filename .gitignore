@@ -5,7 +5,7 @@
 *.tfvars
 
 # SSH Keys (Private Keys)
-my-key.pem
+my-key
 my-key.pub
 
 # Ansible
