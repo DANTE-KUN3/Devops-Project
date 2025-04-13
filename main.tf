@@ -5,7 +5,7 @@ provider "aws" {
 # ✅ Upload local public key to AWS
 resource "aws_key_pair" "key" {
   key_name   = "my-key"
-  public_key = file("my-key.pub")  
+  public_key = var.public_key 
 }
 
 # ✅ Security group module
