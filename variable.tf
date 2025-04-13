@@ -28,3 +28,7 @@ variable "ip_config" {
   
 }
 
+variable "public_key" {
+  description = "The public key to use for SSH access"
+  type        = string
+}
