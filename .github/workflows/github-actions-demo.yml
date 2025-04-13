@@ -14,20 +14,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Set up AWS CLI
-      - name: Set up AWS CLI
-        run: |
-          curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-          unzip awscliv2.zip
-          sudo ./aws/install --update
-          
-
-      # Configure AWS CLI with the provided secrets (AWS credentials)
       - name: Configure AWS CLI
-        run: |
-          aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws configure set region us-east-1
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1  # Change to your desired region~
+
+      # Set up AWS CLI
 
       # Set up Terraform
       - name: Set up Terraform
@@ -36,7 +30,7 @@ jobs:
       # Set up the SSH private key for Terraform (access EC2)
       - name: Set up SSH key for Terraform
         run: |
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/my-key.pem
+          echo "${{ secrets.SSH_PRIVATE_KEY}}" > ~/.ssh/my-key.pem
           chmod 600 ~/.ssh/my-key.pem
 
       # Terraform initialization and plan
