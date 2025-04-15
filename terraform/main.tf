@@ -23,3 +23,4 @@ module "ec2" {
   security_group_ids  = [module.sg.web_sg_id]
 }
 
+#new
