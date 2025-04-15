@@ -55,7 +55,11 @@ jobs:
       - name: Plan Terraform changes
         run: |
           cd terraform
+<<<<<<< HEAD
           terraform plan -var="public_key=${{ secrets.PUBLIC_KEY }}"
+=======
+          terraform plan -parallelism=10
+>>>>>>> ca95599abb9d5f3b887558421cdd10a4e598455d
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
