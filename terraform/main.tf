@@ -33,8 +33,6 @@ module "ec2" {
   instance_type       = var.instance_type
   key_name            = "my-key"
   security_group_ids  = [module.sg.web_sg_id]
-
-  
 }
 
 #new
