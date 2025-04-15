@@ -3,13 +3,11 @@ name: Terraform Automation
 on:
   push:
     branches:
-      - master  # Trigger on push to the main branch
+      - master  # Trigger on push to the master branch
   pull_request:
     branches:
-      - master  # Trigger on pull request to the main branch
-  workflow_dispatch:  
-      - master 
-  workflow_dispatch: # Trigger on pull request to the main branch
+      - master  # Trigger on pull request to the master branch
+  workflow_dispatch:  # Manually trigger the workflow
 
 jobs:
   terraform:
