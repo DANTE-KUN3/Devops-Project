@@ -60,13 +60,7 @@ jobs:
           AWS_DEFAULT_REGION: "us-east-1"
 
       # Step 7: Apply Terraform changes
-      - name: Apply Terraform changes
-        working-directory: ./terraform
-        run: terraform apply -auto-approve -var="public_key=${{ secrets.PUBLIC_KEY }}"
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_DEFAULT_REGION: "us-east-1"
+      
 
       # Step 8: Terraform Destroy (to destroy the infrastructure)
       - name: Destroy Terraform infrastructure
