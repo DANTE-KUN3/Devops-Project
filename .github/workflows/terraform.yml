@@ -6,8 +6,8 @@ on:
       - master  # Trigger on push to the main branch
   pull_request:
     branches:
-      - master  # Trigger on pull request to the main branch
-    workflow_dispatch:
+      - master 
+  workflow_dispatch: # Trigger on pull request to the main branch
 
 jobs:
   terraform:
