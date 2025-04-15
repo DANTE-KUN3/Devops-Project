@@ -1,17 +1,15 @@
 # Terraform state files
-.terraform/
-*.tfstate
-*.tfstate.backup
-*.tfvars
+terraform/.terraform/
+terraform/*.tfstate
+terraform/*.tfstate.backup
+terraform/*.tfvars
 
 # SSH Keys (Private Keys)
-my-key
-
-# Ignore private keys inside the 'ansible/keys/' folder
 ansible/key/*my-key*
+
 # Ansible
-*.retry
-inventory.ini
+ansible/*.retry
+ansible/inventory.ini
 
 # Logs and temporary files
 *.log
